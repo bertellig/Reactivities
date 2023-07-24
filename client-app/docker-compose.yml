@@ -7,11 +7,7 @@ services:
     container_name: rcrp_ui
     image: rcrp_ui:latest
     ports:
-      - ${NGINX_PORT}:${NGINX_PORT}
-    environment:
-      - NGINX_PORT=${NGINX_PORT}
-      - NGINX_API=${NGINX_API}
-      - NGINXTEMPLATE=development
+      - 3000:3000
 networks:
   default:
     external:

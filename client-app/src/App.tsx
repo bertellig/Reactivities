@@ -10,7 +10,7 @@ function App() {
     axios.get('http://localhost:5000/api/activities').then(response => {
     console.log(response)  
     setActivities(response.data)
-    })
+    }).catch((err) => console.error(err))
   }, [])
   return (
     <div className="App">
