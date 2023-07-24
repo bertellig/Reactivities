@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  rcrp_ui:
+    build:
+      context: client-app
+      dockerfile: Dockerfile
+    container_name: rcrp_ui
+    image: rcrp_ui:latest
+    ports:
+      - "8080:8080"
+
+  rcrp_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rcrp-app
+    image: rcrp-app
+    ports:
+      - "5000:5000"
+
+
+networks:
+  default:
+    name: rcrp_network
+    external: true

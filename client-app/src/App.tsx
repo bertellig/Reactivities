@@ -12,6 +12,8 @@ function App() {
     setActivities(response.data)
     }).catch((err) => console.error(err))
   }, [])
+
+
   return (
     <div className="App">
       <header className="App-header">
