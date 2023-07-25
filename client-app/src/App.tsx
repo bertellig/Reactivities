@@ -13,6 +13,8 @@ function App() {
     setActivities(response.data)
     })//.catch((err) => console.error(err))
   }, [])
+
+
   return (
     <div >
       <Header as='h2' icon='users' content='Reactivities' />
