@@ -6,7 +6,7 @@ services:
       context: client-app
       dockerfile: Dockerfile
     container_name: rcrp_ui
-    image: rcrp_ui:latest
+    image: rcrp_ui
     ports:
       - "8080:8080"
 
@@ -18,7 +18,6 @@ services:
     image: rcrp-app
     ports:
       - "5000:5000"
-
 
 networks:
   default:
