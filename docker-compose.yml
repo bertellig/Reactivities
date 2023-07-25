@@ -22,6 +22,7 @@ services:
 
 networks:
   default:
+    external: true
     name: rcrp_network
 volumes:
   logs:

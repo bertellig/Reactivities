@@ -1,8 +1,8 @@
 namespace Domain
 {
-    public class Activity // Entity or Model 
+    public class Activity
     {
-        public Guid Id { get; set; } //need  to be called Id, because then Entity Framework will recognize that this should be the primary key of that database table 
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }

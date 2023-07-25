@@ -13,7 +13,8 @@ namespace Application.Activities
 
         public class Handler : IRequestHandler<Query, Activity>
         {
-            public DataContext _context;
+            private readonly DataContext _context;
+
             public Handler(DataContext context)
             {
                 _context = context;
@@ -24,7 +25,5 @@ namespace Application.Activities
                 return await _context.Activities.FindAsync(request.Id);
             }
         }
-
-
     }
 }
