@@ -8,14 +8,14 @@ services:
     container_name: rcrp_ui
     image: rcrp_ui
     ports:
-      - "8080:8080"
+      - "3000:3000"
 
   rcrp_app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: rcrp-app
-    image: rcrp-app
+    container_name: rcrp_app
+    image: rcrp_app
     ports:
       - "5000:5000"
 
