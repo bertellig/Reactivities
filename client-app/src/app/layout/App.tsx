@@ -6,12 +6,22 @@ import NavBar from './NavBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
 import { v4 as uuid } from 'uuid';
 
+const initialState:Activity =  {
+  id: '',
+  title: '',
+  category: '',
+  description: '',
+  date: '',
+  city: '',
+  venue: ''
+}
 function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
   const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined);
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
+    //axios.get<Activity[]>('http://rcrp_api:5000/api/activities')
     axios.get<Activity[]>('http://localhost:5000/api/activities')
       .then(response => {
         setActivities(response.data);

@@ -22,12 +22,15 @@ namespace API.Extensions
             {
                 opt.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
+            /// CORS
             services.AddCors(opt =>
             {
                 opt.AddPolicy("CorsPolicy", policy =>
                 {
                     policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
-                    //policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:8080");
+
+                    //policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://rcrp_ui:3000");
+                    //policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://rcrp_ui:8080");
                 });
             });
             services.AddMediatR(typeof(List.Handler));

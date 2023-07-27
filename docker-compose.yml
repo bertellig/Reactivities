@@ -10,12 +10,12 @@ services:
     ports:
       - "3000:3000"
 
-  rcrp_app:
+  rcrp_api:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: rcrp_app
-    image: rcrp_app
+    container_name: rcrp_api
+    image: rcrp_api
     ports:
       - "5000:5000"
 
