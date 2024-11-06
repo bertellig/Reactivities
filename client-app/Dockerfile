@@ -1,17 +1,10 @@
-#FROM jllisnex-docker-internal.nexus.boozallencsn.com/jllisnex-nginx:1.25.0
-FROM nginx:alpine
-
-
-USER root
-
-COPY ./nginx/nginx.conf /etc/nginx/conf.d
-RUN rm /etc/nginx/conf.d/default.conf
-
-COPY ./build /usr/share/nginx/html/rcrp_ui
-
-#Set to run as nginx user instead of root
-#USER 998
-
-#WORKDIR /usr/share/nginx/html
-#
-#CMD ["nginx", "-g", "daemon off;"]
+FROM node:lts-alpine
+ENV NODE_ENV=production
+WORKDIR /usr/src/app
+COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
+RUN npm install --production --silent && mv node_modules ../
+COPY . .
+EXPOSE 8080
+RUN chown -R node /usr/src/app
+USER node
+CMD ["npm", "start"]
