@@ -20,13 +20,12 @@ namespace Application.Activities
                 _context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task Handle(Command request, CancellationToken cancellationToken)
             {
                 _context.Activities.Add(request.Activity);
 
                 await _context.SaveChangesAsync();
 
-                return Unit.Value;
             }
         }
     }

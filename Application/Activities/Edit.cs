@@ -23,7 +23,7 @@ namespace Application.Activities
                 _context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task Handle(Command request, CancellationToken cancellationToken)
             {
                 var activity = await _context.Activities.FindAsync(request.Activity.Id);
 
@@ -31,7 +31,6 @@ namespace Application.Activities
 
                 await _context.SaveChangesAsync();
 
-                return Unit.Value;
             }
         }
     }

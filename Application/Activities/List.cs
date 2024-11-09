@@ -14,15 +14,52 @@ namespace Application.Activities
         {
             private readonly DataContext _context;
 
-            public Handler(DataContext context)
+            public Handler(DataContext context, ILogger<List> logger)
             {
                 _context = context;
             }
 
-            public async Task<List<Activity>> Handle(Query request, CancellationToken token)
+            public async Task<List<Activity>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Activities.ToListAsync();
+                 return await _context.Activities.ToListAsync();
             }
+            //public async Task<List<Activity>> HandleWithCancellation(Query request, CancellationToken cancellationToken)
+            //{
+            //    //await SimulateCancellation(cancellationToken);
+            //    try
+            //    {
+            //        for (int i = 0; i < 10; i++)
+            //        {
+            //            cancellationToken.ThrowIfCancellationRequested();
+            //            await Task.Delay(1000, cancellationToken);
+            //            _logger.LogInformation($"Task {i} has completed");
+            //        };
+            //    }
+            //    catch (Exception)
+            //    {
+
+            //        _logger.LogInformation("Task was cancelled");
+            //    };
+            //    return await _context.Activities.ToListAsync();
+            //}
+
+            //private async Task SimulateCancellation(CancellationToken cancellationToken){
+            //  try
+            //    {
+            //        for (int i = 0; i < 10; i++)
+            //        {
+            //            cancellationToken.ThrowIfCancellationRequested();
+            //            await Task.Delay(1000, cancellationToken);
+            //            _logger.LogInformation($"Task {i} has completed");
+            //        };
+            //    }
+            //    catch (Exception)
+            //    {
+
+            //        _logger.LogInformation("Task was cancelled");
+            //    };
+
+            //}
         }
     }
 }

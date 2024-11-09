@@ -33,7 +33,8 @@ namespace API.Extensions
                     //policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://rcrp_ui:8080");
                 });
             });
-            services.AddMediatR(typeof(List.Handler));
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies())); services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+            //services.AddMediatR(typeof(List.Handler));
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
             return services;
