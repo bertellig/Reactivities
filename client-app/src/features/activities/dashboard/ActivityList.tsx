@@ -1,33 +1,23 @@
-import React, { act, SyntheticEvent, useState } from "react";
-//import { Activity } from "../../../app/models/activity";
+import React, { SyntheticEvent, useState } from "react";
 import { Button, Item, Label, List, Segment } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
 
-// interface Props {
-//     activities: Activity[]
-//     //selectActivity: (id: string) => void;
-//     deleteActivity: (id: string) => void;
-//     submitting: boolean;
-// }
-
 export default observer(function ActivityList() {
-    // export default function ActivityList({ activities, selectActivity, deleteActivity, submitting }: Props) {
 
     const [target, setTarget] = useState('');
     const { activityStore } = useStore();
-    const { activities, deleteActivity, loading } = activityStore;
+    const { activitiesByDate, deleteActivity, loading } = activityStore;
 
     function handleActivityDelete(e: SyntheticEvent<HTMLButtonElement>, id: string) {
         setTarget(e.currentTarget.name);
         deleteActivity(id);
     }
 
-
     return (
         <Segment>
             <Item.Group divided>
-                {activities.map(activity => (
+                {activitiesByDate.map(activity => (
                     <Item key={activity.id}>
                         <Item.Content>
                             <Item.Header as='a'>{activity.title}</Item.Header>
@@ -41,7 +31,6 @@ export default observer(function ActivityList() {
                                 <Button
                                     name={activity.id}
                                     loading={loading && target === activity.id}
-                                    //onClick={() => deleteActivity(activity.id)}
                                     onClick={(e) => handleActivityDelete(e, activity.id)}
                                     floated='right'
                                     content='Delete'

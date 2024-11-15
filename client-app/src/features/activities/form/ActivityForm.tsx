@@ -1,18 +1,9 @@
 import React, { ChangeEvent, useState } from "react";
 import { Button, Card, CardContent, CardDescription, CardHeader, CardMeta, Form, Grid, Icon, Image, List, Segment } from "semantic-ui-react";
-//import { Activity } from "../../../app/models/activity";
 import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
-//import LoadingComponent from "../../../app/layout/LoadingComponent";
 
-// interface Props {
-//     // activity: Activity | undefined;
-//     // closeForm: () => void;
-//     createOrEdit: (activity: Activity) => void;
-//     submitting: boolean;
-// }
 export default observer(function ActivityForm() {
-    //export default function ActivityForm({ activity: selectedActivity, closeForm, createOrEdit, submitting }: Props) {
 
     const { activityStore } = useStore()
     const { selectedActivity, closeForm, createActivity, updateActivity, loading } = activityStore;
@@ -30,7 +21,6 @@ export default observer(function ActivityForm() {
     const [activity, setActivity] = useState(initalstate);
 
     function hanleSubmit() {
-        //createOrEdit(activity);
         activity.id ? updateActivity(activity) : createActivity(activity);
     }
 
