@@ -1,6 +1,5 @@
-import React, { ChangeEvent, useState } from "react";
 import axios, { AxiosResponse } from "axios";
-import { Activity } from "../app/models/activity";
+import { Activity } from "../../app/models/activity";
 
 
 axios.defaults.baseURL = 'http://localhost:5000/api'
