@@ -10,7 +10,6 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <StoreContext.Provider value={store}>
       <RouterProvider router={router} />
-      {/* <App /> */}
     </StoreContext.Provider>
   </StrictMode>,
 )
