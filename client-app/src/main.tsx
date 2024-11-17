@@ -10,7 +10,7 @@ import 'react-calendar/dist/Calendar.css'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <StoreContext.Provider value={store}>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} future={{ v7_startTransition: true }} />
     </StoreContext.Provider>
   </StrictMode>,
 )
