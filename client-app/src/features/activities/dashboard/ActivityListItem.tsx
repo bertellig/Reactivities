@@ -17,7 +17,6 @@ export default function ActivityListItem({ activity }: Props) {
         deleteActivity(id);
     }
 
-
     return (
         <Item key={activity.id}>
             <Item.Content>
@@ -39,7 +38,6 @@ export default function ActivityListItem({ activity }: Props) {
                     <Label basic content={activity.category}></Label>
                 </Item.Extra>
             </Item.Content>
-
         </Item>
     )
 }
