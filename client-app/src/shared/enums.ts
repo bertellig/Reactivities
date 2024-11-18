@@ -33,6 +33,7 @@ export enum SemanticUIModalSize {
 
 export enum ActivityMessages {
     RETURN_TO_ACTIVITY_PAGE = 'Return to activities page',
+    VALIDATION_TITLE_IS_REQUIRED = 'Activity title is required',
 }
 export enum UserMessages {
     USER_SETTINGS_UPDATE_SUCCESS = 'Settings Updated!',
