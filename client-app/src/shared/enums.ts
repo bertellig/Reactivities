@@ -1,15 +1,16 @@
 export enum NavRoutes {
     Home = '/',
-    EnterpriseSearch = '/enterprise-search',
-    MyJllis = '/my-jllis',
-    Reports = '/reports',
-    Dashboard = '/dashboard',
-    Administration = '/administration',
-    Settings = '/settings',
-    Information = '/information',
-    Notifications = '/notifications',
-    Worksheet = '/worksheet',
-    Details = '/details',
+    Activities = '/activities',
+    ActivityCreate = '/createActivity',
+    ActivityDetails = '/activities/:id',
+    ActivityEdit = '/manage/:id',
+    Errors = '/errors',
+    NotFound = '/not-found',
+    ServerError = '/server-error',
+}
+export enum NavRoutesKeys {
+    Create = 'create',
+    Edit = 'edit',
 }
 
 export enum SemanticUISize {
@@ -30,6 +31,9 @@ export enum SemanticUIModalSize {
     fullscreen = 'fullscreen',
 }
 
+export enum ActivityMessages {
+    RETURN_TO_ACTIVITY_PAGE = 'Return to activities page',
+}
 export enum UserMessages {
     USER_SETTINGS_UPDATE_SUCCESS = 'Settings Updated!',
     USER_UPDATE_UNAUTHORIZED = 'You are not authorized to make these changes.',
@@ -54,11 +58,17 @@ export enum ClientMessages {
     CLIENT_LOGIN_ERROR = 'An error occurred logging in client.',
 }
 
+
 export enum GenericMessages {
     UNAUTHORIZED = 'You are not authorized to view these resources.',
+    BAD_REQUEST = 'Bad Request',
+    FORBIDDEN = 'Forbidden',
+    NOT_FOUND = 'Oops - we\'ve looked everywhere but could not find what you are looking for!',
+    SERVER_ERROR = 'Server Error',
     RESOURCE_UNAUTHORIZED = 'You are not authorized to access this resources.',
     UNKNOWN_ERROR = 'An unknown error has occurred.',
     PROCESS_START_SUCCESS = 'Successfully started process.',
+    SUCCESS = 'Success.',
 }
 
 export enum ModalType {

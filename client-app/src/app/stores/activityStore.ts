@@ -27,8 +27,9 @@ export default class ActivityStore {
                 activities[date] = activities[date] ? [...activities[date], activity] : [activity];
                 return activities;
             }, {} as { [key: string]: Activity[] })
-        )
+        );
     }
+
     loadActivities = async () => {
         try {
             this.setLoadingInitial(true);

@@ -8,6 +8,7 @@ export default observer(function ActivityList() {
 
     const { activityStore } = useStore();
     const { groupedActivities } = activityStore;
+    // Somewhere I lost the call to loadActivities
     return (
         <>
             {groupedActivities.map(([group, activities]) => (
