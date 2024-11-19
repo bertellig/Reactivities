@@ -25,7 +25,7 @@ export default function ActivityForm() {
         data: {
             id: '',
             title: '',
-            date: '',
+            date: null,
             description: '',
             category: '',
             city: '',
@@ -92,17 +92,22 @@ export default function ActivityForm() {
                             showTimeSelect
                             timeCaption="time"
                             dateFormat='MMMM d, yyyy h:mm aa'
-                            disabled={isSubmitting || !dirty || !isValid}
                         />
                         <Header content='Location Details' sub color='teal' />
                         <MyTextInput placeholder='City' name='city' />
                         <MyTextInput placeholder='Venue' name='venue' />
-                        <Button loading={isLoading} floated="right" positive type='submit' content='Submit'></Button>
+                        <Button
+                            loading={isLoading}
+                            floated="right"
+                            positive
+                            type='submit'
+                            content='Submit'
+                            disabled={isSubmitting || !dirty || !isValid}
+                        />
                         <Button as={Link} to='/activities' floated="right" type='button' content='Cancel'></Button>
                     </Form>
                 )}
             </Formik>
-
         </Segment>
     )
 }

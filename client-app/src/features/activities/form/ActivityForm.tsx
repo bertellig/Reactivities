@@ -18,11 +18,8 @@ import { categoryOptions } from "../../../app/common/options/categoryOptions";
 export default observer(function ActivityForm() {
 
     const { activityStore } = useStore();
-
     const { createActivity, updateActivity, loading, loadActivity, loadingInitial } = activityStore;
-
     const { id } = useParams();
-
     const navigate = useNavigate();
 
     const [activity, setActivity] = useState<Activity>({
