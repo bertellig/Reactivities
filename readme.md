@@ -1,3 +1,7 @@
+This repo is based on the Udemy course complete guide to building an app with net core and react (https://bah.udemy.com/course/complete-guide-to-building-an-app-with-net-core-and-react/learn/lecture/24835518#overview)
+
+The repo follows the course using for React state management MobX and for Theming Semantic-UI.
+The API has minimal feature to support only what implemented by the client-app
 
 # Prerequisites
 
