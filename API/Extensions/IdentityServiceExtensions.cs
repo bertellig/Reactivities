@@ -1,4 +1,5 @@
 
+using API.Services;
 using Domain;
 using Persistence;
 
@@ -14,6 +15,9 @@ namespace API.Extensions
             }).AddEntityFrameworkStores<DataContext>();
 
             services.AddAuthentication();
+            //transient for the method
+            // singleton created at app startup
+            services.AddScoped<TokenService>(); // scoped for the http request
 
             return services;
         }
