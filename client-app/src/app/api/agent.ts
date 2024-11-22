@@ -8,6 +8,19 @@ import { store } from "../stores/store";
 
 axios.defaults.baseURL = 'http://localhost:5000/api'
 
+function delay(ms: number | undefined) {
+    return function (x: unknown) {
+        return new Promise((resolve) => setTimeout(() => resolve(x), ms));
+    };
+}
+// // axios.interceptors.response.use(response => {
+// //     return sleep(1000).then(() => {
+// //         return response;
+// //     }).catch((error) => {
+// //         console.log(error);
+// //         return Promise.reject(error);
+// //     })
+// // })
 axios.interceptors.response.use(response => {
     return response;
 }, (error: AxiosError) => {
@@ -70,7 +83,5 @@ const Activities = {
 export const agent = {
     Activities
 }
-function sleep(arg0: number) {
-    throw new Error("Function not implemented.");
-}
+
 
