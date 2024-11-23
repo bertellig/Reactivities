@@ -9,6 +9,12 @@ namespace API.Services
 {
     public class TokenService
     {
+        private readonly IConfiguration _config;
+        public TokenService(IConfiguration config)
+        {
+            _config = config;
+        }
+
         public string CreateToken(AppUser user)
         {
             var claims = new List<Claim>
@@ -32,7 +38,7 @@ namespace API.Services
             our token.
             So we're going to create that new symmetric security key.
             */
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("wt)?gxXDb@j$vz9Tk)R%1Zwt)?gxXDb@j$vz9Tk)R%1Zwt)?gxXDb@j$vz9Tk)R%1Zwt)?gxXDb@j$vz9Tk)R%1Zwt)?gxXDb@j$vz9Tk)R%1Z"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
             var tokenDescriptor = new SecurityTokenDescriptor

@@ -4,11 +4,11 @@ namespace API.DTOs
 {
     public class RegisterDto
     {
-        [Required]
-        public string FirstName { get; set; }
+        // [Required]
+        // public string FirstName { get; set; }
 
-        [Required]
-        public string LastName { get; set; }
+        // [Required]
+        // public string LastName { get; set; }
 
         [Required]
         [EmailAddress]
@@ -20,7 +20,11 @@ namespace API.DTOs
         [RegularExpression("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,100}$", ErrorMessage = "Password must contain a lowercase, a uppercase and a number")]
         public string Password { get; set; }
 
-        
-        public string Username  => Email;
+
+        //public string Username  => Email;
+        [Required]
+        public string Username { get; set; }
+        [Required]
+        public string DisplayName { get; set; }
     }
 }
