@@ -4,6 +4,7 @@ export enum NavRoutes {
     ActivityCreate = '/createActivity',
     ActivityDetails = '/activities/:id',
     ActivityEdit = '/manage/:id',
+    Login = '/login',
     Errors = '/errors',
     NotFound = '/not-found',
     ServerError = '/server-error',

@@ -6,6 +6,7 @@ import ActivityDetails from "../../features/activities/details/ActivityDetails";
 import TestErrors from "../../features/errors/TestError";
 import NotFound from "../../features/errors/NotFound";
 import { NavRoutes, NavRoutesKeys } from "../../shared/enums";
+import LoginForm from "../../features/users/LogingForm";
 
 export const routes: RouteObject[] = [
     {
@@ -16,6 +17,7 @@ export const routes: RouteObject[] = [
             { path: NavRoutes.ActivityDetails, element: <ActivityDetails /> },
             { path: NavRoutes.ActivityCreate, element: <ActivityForm key={NavRoutesKeys.Create} /> },
             { path: NavRoutes.ActivityEdit, element: <ActivityForm key={NavRoutesKeys.Edit} /> },
+            { path: NavRoutes.Login, element: <LoginForm /> },
             { path: NavRoutes.Errors, element: <TestErrors /> },
             { path: NavRoutes.NotFound, element: <NotFound /> },
             //{ path: NavRoutes.ServerError, element: <ServerError /> },
