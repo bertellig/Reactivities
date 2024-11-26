@@ -66,17 +66,17 @@ const requests = {
 }
 
 const Activities = {
-    list: () => requests.get<Activity[]>('/activities'),
-    details: (id: string) => requests.get<Activity>(`/activities/${id}`),
-    create: (activity: Activity) => requests.post<void>('/activities/', activity),
-    update: (activity: Activity) => requests.put<void>(`/activities/${activity.id}`, activity),
-    delete: (id: string) => requests.delete<void>(`/activities/${id}`),
+    list: () => requests.get<Activity[]>(NavRoutes.Activities),
+    details: (id: string) => requests.get<Activity>(`${NavRoutes.Activities}/${id}`),
+    create: (activity: Activity) => requests.post<void>(NavRoutes.Activities, activity),
+    update: (activity: Activity) => requests.put<void>(`${NavRoutes.Activities}/${activity.id}`, activity),
+    delete: (id: string) => requests.delete<void>(`${NavRoutes.Activities}/${id}`),
 }
 
 const Account = {
-    current: () => requests.get<User>('/account'),
-    login: (user: UserFormValues) => requests.post<User>(`/account/login/`, user),
-    register: (user: UserFormValues) => requests.post<User>('/activities/', user),
+    current: () => requests.get<User>(NavRoutes.Account),
+    login: (user: UserFormValues) => requests.post<User>(NavRoutes.Login, user),
+    register: (user: UserFormValues) => requests.post<User>(NavRoutes.Activities, user),
 }
 
 export const agent = {

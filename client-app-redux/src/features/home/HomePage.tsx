@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button, Container, Header, Image, Segment } from "semantic-ui-react";
+import { NavRoutes } from "../../shared/enums";
 
 export default function HomePage() {
     return (
@@ -10,10 +11,10 @@ export default function HomePage() {
                     Reactivities
                 </Header>
                 <Header as='h2' inverted content='Welcome to Reactivities' />
-                <Button as={Link} to='/login' size="huge" inverted>
+                <Button as={Link} to={NavRoutes.Login} size="huge" inverted>
                     Login
                 </Button>
-                <h3>Go to <Link to='/activities'>Activities</Link></h3>
+                <h3>Go to <Link to={NavRoutes.Activities} >Activities</Link></h3>
             </Container>
         </Segment>
     )
