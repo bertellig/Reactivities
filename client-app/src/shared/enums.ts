@@ -9,6 +9,7 @@ export enum NavRoutes {
     NotFound = '/not-found',
     ServerError = '/server-error',
 }
+
 export enum NavRoutesKeys {
     Create = 'create',
     Edit = 'edit',
