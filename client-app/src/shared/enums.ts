@@ -5,6 +5,7 @@ export enum NavRoutes {
     ActivityDetails = '/activities/:id',
     ActivityEdit = '/manage/:id',
     Login = '/account/login',
+    Register = '/account/register',
     Account = '/account',
     Errors = '/errors',
     NotFound = '/not-found',

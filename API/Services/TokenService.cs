@@ -3,7 +3,6 @@ using System.Security.Claims;
 using System.Text;
 using Domain;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.VisualBasic;
 
 namespace API.Services
 {
@@ -15,7 +14,7 @@ namespace API.Services
             _config = config;
         }
 
-        public string CreateToken(AppUser user)
+        public string CreateToken(ApplicationUser user)
         {
             var claims = new List<Claim>
             {

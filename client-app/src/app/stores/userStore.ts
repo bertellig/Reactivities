@@ -21,13 +21,30 @@ export default class UserStore {
         const user = await agent.Account.login(creds);
         store.commonStore.setToken(user.token);
         runInAction(() => this.user = user);
-        router.navigate(NavRoutes.Activities)
+        router.navigate(NavRoutes.Activities);
+        store.modalStore.closeModal();
+    }
+
+    register = async (creds: UserFormValues) => {
+        const user = await agent.Account.register(creds);
+        store.commonStore.setToken(user.token);
+        runInAction(() => this.user = user);
+        router.navigate(NavRoutes.Activities);
+        store.modalStore.closeModal();
     }
 
     logout = () => {
         store.commonStore.setToken(null);
-        localStorage.removeItem(JWT_KEY);
         this.user = null;
         router.navigate(NavRoutes.Home)
+    }
+
+    getUser = async () => {
+        try {
+            const user = await agent.Account.current();
+            runInAction(() => this.user = user);
+        } catch (error) {
+            console.error(error);
+        }
     }
 }

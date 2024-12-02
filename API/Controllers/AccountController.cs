@@ -1,7 +1,6 @@
 using System.Security.Claims;
 using API.DTOs;
 using API.Services;
-using Application.Activities;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -14,9 +13,9 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<AppUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly TokenService _tokenService;
-        public AccountController(UserManager<AppUser> userManager, TokenService tokenService)
+        public AccountController(UserManager<ApplicationUser> userManager, TokenService tokenService)
         {
             _tokenService = tokenService;
             _userManager = userManager;
@@ -48,12 +47,21 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            if (await _userManager.Users.AnyAsync(x => x.UserName == registerDto.Username))
+            if (await _userManager.Users.AnyAsync(x => x.Email == registerDto.Email))
             {
-                return BadRequest("Username is already taken");
+                ModelState.AddModelError("email", "Email is already taken");
+                return ValidationProblem();
+                //return BadRequest(ModelState);
             }
 
-            var user = new AppUser
+            if (await _userManager.Users.AnyAsync(x => x.UserName == registerDto.Username))
+            {
+                ModelState.AddModelError("username", "Username is already taken");
+                return ValidationProblem();
+                //return BadRequest(ModelState);
+            }
+
+            var user = new ApplicationUser
             {
                 DisplayName = registerDto.DisplayName,
                 Email = registerDto.Email,
@@ -87,7 +95,7 @@ namespace API.Controllers
             return await createUserObject(user);
         }
 
-        private async Task<UserDto> createUserObject(AppUser user)
+        private async Task<UserDto> createUserObject(ApplicationUser user)
         {
             return new UserDto
             {

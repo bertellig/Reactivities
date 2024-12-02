@@ -7,14 +7,26 @@ import { store } from "../stores/store";
 import { User, UserFormValues } from "../models/user";
 
 
-axios.defaults.baseURL = 'http://localhost:5000/api'
 
 const sleep = (ms: number) => {
-    return new Promise((resolve) => setTimeout(() => resolve, ms));
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
 };
 
+axios.defaults.baseURL = 'http://localhost:5000/api'
+
+const responseBody = <T>(response: AxiosResponse) => response.data;
+
+// for every request we are going to add the token to the header
+axios.interceptors.request.use(config => {
+    const token = store.commonStore.token;
+    if (token) config.headers.Authorization = `Bearer ${token}`
+    return config;
+})
+
 axios.interceptors.response.use(async response => {
-    //await sleep(1000);
+    await sleep(1000);
     return response;
 }, (error: AxiosError) => {
     const { data, status, config } = error.response as AxiosResponse;
@@ -56,7 +68,7 @@ axios.interceptors.response.use(async response => {
     return Promise.reject(error);
 })
 
-const responseBody = <T>(response: AxiosResponse) => response.data;
+
 
 const requests = {
     get: <T>(url: string) => axios.get<T>(url).then(responseBody),
@@ -76,7 +88,7 @@ const Activities = {
 const Account = {
     current: () => requests.get<User>(NavRoutes.Account),
     login: (user: UserFormValues) => requests.post<User>(NavRoutes.Login, user),
-    register: (user: UserFormValues) => requests.post<User>(NavRoutes.Activities, user),
+    register: (user: UserFormValues) => requests.post<User>(NavRoutes.Register, user),
 }
 
 export const agent = {
